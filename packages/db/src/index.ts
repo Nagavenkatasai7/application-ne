@@ -24,7 +24,12 @@ function createDb() {
     // Use standard pg for development/CI
     const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
     if (!connectionString) {
-      throw new Error("POSTGRES_URL or DATABASE_URL environment variable is required");
+      // During build time, return a mock db that will fail at runtime if actually used
+      // This allows the build to succeed when env vars aren't set
+      console.warn("Warning: POSTGRES_URL not set. Database operations will fail at runtime.");
+      // Create a dummy pool that will fail on actual use
+      const pool = new Pool({ connectionString: "postgresql://dummy:dummy@localhost:5432/dummy" });
+      return drizzlePg(pool, { schema });
     }
     const pool = new Pool({ connectionString });
     return drizzlePg(pool, { schema });

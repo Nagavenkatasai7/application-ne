@@ -469,6 +469,12 @@ importers:
 
   apps/shell:
     dependencies:
+      '@resume-maker/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
+      '@resume-maker/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@resume-maker/types':
         specifier: workspace:*
         version: link:../../packages/types
