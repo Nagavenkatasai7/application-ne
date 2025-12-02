@@ -1,0 +1,43 @@
+{
+  "name": "@resume-maker/types",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "import": "./dist/auth.js"
+    },
+    "./resume": {
+      "types": "./dist/resume.d.ts",
+      "import": "./dist/resume.js"
+    },
+    "./job": {
+      "types": "./dist/job.d.ts",
+      "import": "./dist/job.js"
+    },
+    "./application": {
+      "types": "./dist/application.d.ts",
+      "import": "./dist/application.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0"
+  }
+}

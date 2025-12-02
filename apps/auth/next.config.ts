@@ -1,0 +1,49 @@
+import type { NextConfig } from "next";
+
+/**
+ * Auth Zone Configuration
+ *
+ * Handles authentication pages and API routes.
+ * Runs on port 3001 in development.
+ */
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  output: "standalone",
+
+  // Transpile monorepo packages to ensure React contexts work properly
+  transpilePackages: [
+    "@resume-maker/ui",
+    "@resume-maker/db",
+    "@resume-maker/auth",
+    "@resume-maker/api-utils",
+    "@resume-maker/types",
+  ],
+
+  // Auth zone has its own base path in production (multi-zones)
+  // In development, routes work directly at localhost:3001
+
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-DNS-Prefetch-Control", value: "on" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-XSS-Protection", value: "1; mode=block" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+    ];
+  },
+
+  poweredByHeader: false,
+  compress: true,
+};
+
+export default nextConfig;

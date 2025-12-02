@@ -1,0 +1,51 @@
+{
+  "name": "@resume-maker/api-utils",
+  "version": "1.0.0",
+  "description": "Shared API utilities for resume-maker zones",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./responses": {
+      "types": "./dist/responses.d.ts",
+      "import": "./dist/responses.js"
+    },
+    "./validation": {
+      "types": "./dist/validation.d.ts",
+      "import": "./dist/validation.js"
+    },
+    "./rate-limit": {
+      "types": "./dist/rate-limit.d.ts",
+      "import": "./dist/rate-limit.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@upstash/ratelimit": "^2.0.0",
+    "@upstash/redis": "^1.34.0",
+    "zod": "^3.24.0"
+  },
+  "peerDependencies": {
+    "next": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

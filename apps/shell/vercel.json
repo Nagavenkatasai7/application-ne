@@ -1,0 +1,52 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/auth/:path*",
+      "destination": "https://resume-maker-auth.vercel.app/auth/:path*"
+    },
+    {
+      "source": "/resumes/:path*",
+      "destination": "https://resume-maker-resumes.vercel.app/resumes/:path*"
+    },
+    {
+      "source": "/jobs/:path*",
+      "destination": "https://resume-maker-jobs.vercel.app/jobs/:path*"
+    },
+    {
+      "source": "/modules/:path*",
+      "destination": "https://resume-maker-modules.vercel.app/modules/:path*"
+    },
+    {
+      "source": "/applications/:path*",
+      "destination": "https://resume-maker-applications.vercel.app/applications/:path*"
+    },
+    {
+      "source": "/api/auth/:path*",
+      "destination": "https://resume-maker-auth.vercel.app/api/auth/:path*"
+    },
+    {
+      "source": "/api/resumes/:path*",
+      "destination": "https://resume-maker-resumes.vercel.app/api/resumes/:path*"
+    },
+    {
+      "source": "/api/jobs/:path*",
+      "destination": "https://resume-maker-jobs.vercel.app/api/jobs/:path*"
+    },
+    {
+      "source": "/api/linkedin/:path*",
+      "destination": "https://resume-maker-jobs.vercel.app/api/linkedin/:path*"
+    },
+    {
+      "source": "/api/modules/:path*",
+      "destination": "https://resume-maker-modules.vercel.app/api/modules/:path*"
+    },
+    {
+      "source": "/api/applications/:path*",
+      "destination": "https://resume-maker-applications.vercel.app/api/applications/:path*"
+    }
+  ]
+}

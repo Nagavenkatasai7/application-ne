@@ -1,0 +1,46 @@
+{
+  "name": "@resume-maker/auth",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./password": {
+      "types": "./dist/password.d.ts",
+      "import": "./dist/password.js"
+    },
+    "./middleware": {
+      "types": "./dist/middleware.d.ts",
+      "import": "./dist/middleware.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@auth/core": "^0.41.0",
+    "@auth/drizzle-adapter": "^1.11.1",
+    "@resume-maker/db": "workspace:*",
+    "@resume-maker/types": "workspace:*",
+    "bcryptjs": "^3.0.3",
+    "drizzle-orm": "^0.44.7",
+    "next-auth": "5.0.0-beta.30"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "next": "16.0.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "next": ">=14.0.0"
+  }
+}
