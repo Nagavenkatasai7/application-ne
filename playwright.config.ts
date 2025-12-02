@@ -46,5 +46,9 @@ export default defineConfig({
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
+    env: {
+      POSTGRES_URL: process.env.POSTGRES_URL || "",
+      AUTH_SECRET: process.env.AUTH_SECRET || "",
+    },
   },
 });

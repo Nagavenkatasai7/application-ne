@@ -23,9 +23,11 @@
   },
   "dependencies": {
     "@vercel/postgres": "^0.10.0",
-    "drizzle-orm": "^0.44.7"
+    "drizzle-orm": "^0.44.7",
+    "pg": "^8.13.0"
   },
   "devDependencies": {
+    "@types/pg": "^8.11.6",
     "next-auth": "5.0.0-beta.30",
     "tsup": "^8.5.1",
     "typescript": "^5.7.0"
