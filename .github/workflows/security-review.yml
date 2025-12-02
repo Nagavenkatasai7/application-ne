@@ -1,0 +1,44 @@
+name: Security Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'apps/*/src/app/api/**'
+      - 'packages/auth/**'
+      - 'packages/db/**'
+      - '*.config.ts'
+      - '*.config.js'
+
+jobs:
+  security-review:
+    name: Claude Security Audit
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+      security-events: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Security Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          model: claude-sonnet-4-5-20250929
+          review_instructions: |
+            SECURITY AUDIT FOCUS:
+            - SQL injection vulnerabilities in database queries
+            - Authentication/authorization bypass risks
+            - Input validation and sanitization
+            - Sensitive data exposure (API keys, secrets)
+            - OWASP Top 10 vulnerabilities
+            - Rate limiting and abuse prevention
+            - Session management security
+            Report with severity levels: CRITICAL, HIGH, MEDIUM, LOW
